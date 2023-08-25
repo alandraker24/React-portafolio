@@ -1,15 +1,16 @@
 import { useState } from 'react' 
-export function TwitterFollowCard({ children, userName }) {
-const [isFollowing, setIsFollowing] = useState(false)
-//tengo un estado con dos paradas isfollowing y setisfollowing
+export function TwitterFollowCard({ children, userName, initialIsFollowing }) {
+const [isFollowing, setIsFollowing] = useState(initialIsFollowing)
+//tengo un estado con dos estaciones que son el valor y la forma de 
+//actualizar el state, isfollowing y setIsFollowing.
 
   const text = isFollowing ? 'Siguiendo' : 'Seguir'
-  //que cuando estoy siguiendo me gustaira ver siguiendo sino seguir
+  //que cuando estoy siguiendo me gustaira ver siguiendo, sino, seguir.
   const buttonClassName = isFollowing
-  ? 'tw-followCard-button is-following' //si esta siguiendo tendre el css followcard button y ademas la clase is-following 
+  ? 'tw-followCard-button is-following' //Que si esta siguiendo tendre el css followcard button y ademas la clase is-following 
   : 'tw-followCard-button'              //si no, el button normal. 
   
-  //Cuando haga clic en el boton haz esto
+  //Que cuando haga clic en el boton haga esto, le dara la vuelta.
   const handleClick = () => {
     setIsFollowing(!isFollowing)
   }
@@ -31,10 +32,11 @@ const [isFollowing, setIsFollowing] = useState(false)
             </span>
           </div>
         </header>
-  
+        {/* comentarios dentro de jsx */}
         <aside>
           <button className={buttonClassName} onClick={handleClick }>
-            {text}    
+            <span className='tw-followCard-text'>{text}</span> 
+            <span className='tw-followCard-stopFollow'>Dejar de seguir</span>   
           </button>
         </aside>
   

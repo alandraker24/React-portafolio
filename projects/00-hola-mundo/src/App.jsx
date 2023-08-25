@@ -2,24 +2,43 @@ import React from 'react'
 import './App.css'
 import { TwitterFollowCard } from './TwitterFollowCard'
 
-export function App () {
+const users = [
+  {
+    userName: 'alandraker24',
+    name: 'Alan Rammos',
+    isFolowing: true
+  },
+  {
+    userName: 'ramos_yobani',
+    name: 'Yobani Ramos',
+    isFolowing: true
+  },
+  {
+    userName: 'raulgarciadevop',
+    name: 'Raul Garcia',
+    isFolowing: false
+  },
+  {
+    userName: 'brandonblain',
+    name: 'Brandon Martinez',
+    isFolowing: false
+  }
+]
 
-  
+export function App () {
   return (
     <section className='App'>
-      <TwitterFollowCard isFollowing userName='alandraker24'>
-        Alan Ramos
-      </TwitterFollowCard>  
-      <TwitterFollowCard isFollowing userName='ramos_yobani'> 
-        Yobani Ramos
-      </TwitterFollowCard >
-      <TwitterFollowCard isFollowing userName='raulgarciadevop'>
-        Raul Garcia
-      </TwitterFollowCard> 
-      <TwitterFollowCard isFollowing={false} userName='brandonblain'>
-        Brando Martinez
-      </TwitterFollowCard> 
-      
+      {
+        users.map(({ userName, name, isFolowing }) => (
+          <TwitterFollowCard
+            key={userName}
+            userName = {userName}
+            initialIsFollowing = {isFolowing}
+          >
+            {name}
+          </TwitterFollowCard> 
+        ))
+      }
     </section>
   )
 }
